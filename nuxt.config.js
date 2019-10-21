@@ -1,3 +1,4 @@
+import prismic from 'prismic-javascript'
 
 export default {
   mode: 'universal',
@@ -51,5 +52,17 @@ export default {
   },
   env: {
     baseUrl: process.env.BASE_URL || 'http://localhost:3000'
+  },
+  generate:{
+    routes: function() {
+      return prismic
+      .getApi('https://distropaper.cdn.prismic.io/api/v2')
+      .then(api =>
+        api.query(prismic.Predicates.at('document.type', 'project'))
+      )
+      .then(response => {
+        return response.results.map(project => `/project/${project.id}`)
+      })
+    }
   }
 }
