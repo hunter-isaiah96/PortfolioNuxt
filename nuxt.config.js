@@ -54,15 +54,11 @@ export default {
     baseUrl: process.env.BASE_URL || 'http://localhost:3000'
   },
   generate:{
-    routes: function() {
-      return prismic
-      .getApi('https://distropaper.cdn.prismic.io/api/v2')
-      .then(api =>
-        api.query(prismic.Predicates.at('document.type', 'project'))
-      )
-      .then(response => {
-        return response.results.map(project => `/project/${project.id}`)
-      })
+    async routes () {
+      const api = await prismic
+        .getApi('https://distropaper.cdn.prismic.io/api/v2')
+      const response = await api.query(prismic.Predicates.at('document.type', 'project'))
+      return response.results.map(project => `/${project.id}`)
     }
   }
 }
