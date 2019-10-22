@@ -51,7 +51,7 @@ export default {
     }
   },
   env: {
-    baseUrl:  process.env.NODE_ENV !== 'production' ? 'http://localhost:3000/' : 'https://isaiahhunter.com/'
+    baseUrl:  process.env.NODE_ENV !== 'production' ? 'http://localhost:3000/' : 'http://isaiahhunter.com/'
   },
   generate:{
     async routes () {

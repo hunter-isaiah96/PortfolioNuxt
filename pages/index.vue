@@ -36,10 +36,10 @@ export default {
         { hid: 'description', name: 'description', content: this.description },
         { hid: 'og:description', name: 'og:description', content: this.description },
         { hid: 'og:title', name: 'og:title', content: this.title },
-        { hid: 'og:image', name: 'og:image', content: process.env.baseUrl + image },
+        { hid: 'og:image', name: 'og:image', content: process.env.baseUrl + image.substring(1) },
         { hid: 'twitter:title', name: 'twitter:title', content: this.title },
         { hid: 'twitter:description', name: 'twitter:description', content: this.description },
-        { hid: 'twitter:image', name: 'twitter:image', content: process.env.baseUrl + image },
+        { hid: 'twitter:image', name: 'twitter:image', content: process.env.baseUrl + image.substring(1) },
       ]
     }
   },

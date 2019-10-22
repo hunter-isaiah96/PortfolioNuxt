@@ -39,7 +39,7 @@ export default {
         { hid: 'twitter:image', name: 'twitter:image', content: this.post.sections[0].media.url.replace('https://', 'http://') },
       ],
       link: [
-        { rel: 'canonical', href: `${process.env.baseUrl}/${this.id}`  }
+        { rel: 'canonical', href: process.env.baseUrl + this.id  }
       ]
     }
   },
