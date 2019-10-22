@@ -45,3 +45,29 @@ h2.project-info {
   font-size: 30px;
   margin-bottom: 30px;
 }
+
+@media only screen and (max-width: 1280px) {
+  body {
+    width: 90%;
+  }
+
+  .project-info {
+    width: 80%;
+    &.full {
+      width: 100%;
+    }
+  }
+
+  .projects li {
+    display: block;
+    .media {
+      padding-left: 0;
+    }
+  }
+}
+
+@media only screen and (min-width: 1281px) and (max-width: 1700px) {
+  body {
+    width: 70%;
+  }
+}
