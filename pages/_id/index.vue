@@ -32,7 +32,7 @@ export default {
         { hid: 'og:title', name: 'og:title', content: this.post.sections[0].header[0].text },
         { hid: 'og:image', name: 'og:image', content: this.post.sections[0].media.url },
         { hid: 'og:type', name: 'og:type', content: 'article' },
-        { hid: 'og:url', name: 'og:url', content: process.env.baseUrl + this.post.id },
+        { hid: 'og:url', name: 'og:url', content: process.env.baseUrl + this.id },
         { hid: 'og:site_name', name: 'og:site_name', content: "Isaiah Hunter's Portfolio" },
         { hid: 'twitter:title', name: 'twitter:title', content: this.post.sections[0].header[0].text },
         { hid: 'twitter:description', name: 'twitter:description', content: this.post.sections[0].body[0].text },
