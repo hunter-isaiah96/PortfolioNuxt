@@ -28,4 +28,13 @@ li {
     }
   }
 }
+
+@media only screen and (max-width: 1280px) {
+  li {
+    display: block;
+    .media {
+      padding-left: 0;
+    }
+  }
+}
 </style>
