@@ -1,7 +1,9 @@
 <template>
   <div>
     <Header></Header>
-    <nuxt />
+    <transition name="page" mode="out-in">
+      <nuxt />
+    </transition>
   </div>
 </template>
 <script>
