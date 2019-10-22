@@ -30,13 +30,13 @@ export default {
         { hid: 'description', name: 'description', content: this.post.sections[0].body[0].text },
         { hid: 'og:description', name: 'og:description', content: this.post.sections[0].body[0].text },
         { hid: 'og:title', name: 'og:title', content: this.post.sections[0].header[0].text },
-        { hid: 'og:image', name: 'og:image', content: this.post.sections[0].media.url },
+        { hid: 'og:image', name: 'og:image', content: this.post.sections[0].media.url.replace('https://', 'http://') },
         { hid: 'og:type', name: 'og:type', content: 'article' },
         { hid: 'og:url', name: 'og:url', content: process.env.baseUrl + this.id },
         { hid: 'og:site_name', name: 'og:site_name', content: "Isaiah Hunter's Portfolio" },
         { hid: 'twitter:title', name: 'twitter:title', content: this.post.sections[0].header[0].text },
         { hid: 'twitter:description', name: 'twitter:description', content: this.post.sections[0].body[0].text },
-        { hid: 'twitter:image', name: 'twitter:image', content: this.post.sections[0].media.url },
+        { hid: 'twitter:image', name: 'twitter:image', content: this.post.sections[0].media.url.replace('https://', 'http://') },
       ],
       link: [
         { rel: 'canonical', href: `${process.env.baseUrl}/${this.id}`  }
