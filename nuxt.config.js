@@ -29,6 +29,8 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    '~/plugins/viewer',
+    '~/plugins/prismic'
   ],
   /*
   ** Nuxt.js dev-modules

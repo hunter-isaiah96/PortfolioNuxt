@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import prismic from 'prismic-javascript'
+
 export default {
   head() {
     return {
@@ -43,8 +43,8 @@ export default {
       ]
     }
   },
-  asyncData({ params }) {
-    return prismic
+  asyncData({ params, app }) {
+    return app.prismic
       .getApi('https://distropaper.cdn.prismic.io/api/v2')
       .then(api => api.getByID(params.id))
       .then(response => {

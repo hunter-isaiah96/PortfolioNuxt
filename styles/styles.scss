@@ -58,6 +58,13 @@ h2.project-info {
   }
 }
 
+.fade {
+  transition: opacity 0.25s ease-in-out;
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
 .page-enter-active,
 .page-leave-active {
   transition: opacity 0.3s, transform 0.3s;

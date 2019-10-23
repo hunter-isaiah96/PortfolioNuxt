@@ -16,7 +16,6 @@
 
 <script>
 import Project from '@/components/Project'
-import prismic from 'prismic-javascript'
 import image from '@/assets/me.jpg'
 
 export default {
@@ -43,11 +42,11 @@ export default {
       ]
     }
   },
-  asyncData() {
-    return prismic
+  asyncData({ app }) {
+    return app.prismic
       .getApi('https://distropaper.cdn.prismic.io/api/v2')
       .then(api =>
-        api.query(prismic.Predicates.at('document.type', 'project'), {
+        api.query(app.prismic.Predicates.at('document.type', 'project'), {
           orderings:
             '[my.project.year desc, document.first_publication_date desc]'
         })
