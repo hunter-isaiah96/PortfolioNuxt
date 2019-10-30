@@ -22,7 +22,7 @@ li {
   grid-template-columns: 35% 65%;
   margin-bottom: 4em;
   .media {
-    padding-left: 5%;
+    margin-left: 5%;
     img {
       width: 100%;
     }
@@ -33,7 +33,7 @@ li {
   li {
     display: block;
     .media {
-      padding-left: 0;
+      margin-left: 0;
     }
   }
 }
