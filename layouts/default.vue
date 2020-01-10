@@ -1,12 +1,13 @@
 <template>
   <div>
-    <v-app style="background-color: #000;">
+    <div class="cursor"></div>
+    <v-app style="background-color: #111;">
       <v-container class="pa-0" fluid>
-        <v-row class="navigation headline" color="transparent">
+        <!-- <v-row class="navigation headline" color="transparent">
           <v-col cols="auto" class="mb-4">Intro</v-col>
           <v-col cols="auto" class="mb-4">Portfolio</v-col>
           <v-col cols="auto">Blog</v-col>
-        </v-row>
+        </v-row>-->
         <v-row class="full-height" no-gutters>
           <v-col class="pr-6" cols="6">
             <v-row class="fill-height" align-content="center" justify="end">
@@ -14,18 +15,20 @@
                 <h1 class="text-right mb-6 display-1 font-weight-bold">Isaiah Hunter</h1>
                 <!-- <v-img class="mb-6 ml-auto" :src="require('../assets/logo.svg')" width="50%"></v-img> -->
                 <p
-                  class="mb-6"
+                  class="mb-6 text-right"
                 >Welcome! I’m Isaiah and clearly, I need professional photos. I’m a passionate self taught developer & graphic designer, check out some of my work and feel free to contact me.</p>
                 <v-row justify="end">
                   <v-col cols="auto" v-for="(link, i) in social" :key="i">
-                    <v-img height="20" width="20" :src="require(`../assets/${link.icon}.svg`)"></v-img>
+                    <nuxt-link to="/">
+                      <v-img height="20" width="20" :src="require(`../assets/${link.icon}.svg`)"></v-img>
+                    </nuxt-link>
                   </v-col>
                 </v-row>
               </v-col>
             </v-row>
           </v-col>
-          <v-col cols="6">
-            <v-img class="intro-image" :src="me" height="100%"></v-img>
+          <v-col md="6">
+            <v-img class="intro-image" :src="me" height="100vh" transition="slide-y-transition"></v-img>
           </v-col>
         </v-row>
       </v-container>
@@ -55,6 +58,32 @@ export default {
         }
       ]
     }
+  },
+  mounted() {
+    let moveWithCursor = true
+    let cursorA = document.getElementsByClassName('cursor')[0]
+    let links = document.getElementsByTagName('a')
+    // for (let link of links) {
+    //   link.addEventListener('mouseover', e => {
+    //     cursorA.classList.add('expand')
+    //   })
+    //   link.addEventListener('mouseout', e => {
+    //     defaultCursor()
+    //   })
+    // }
+
+    document.addEventListener('mousemove', e => {
+      if (moveWithCursor) {
+        cursorA.style.left = `${e.pageX}px`
+        cursorA.style.top = `${e.pageY}px`
+      }
+    })
+    document.addEventListener('mousedown', e => {
+      cursorA.classList.add('expand')
+    })
+    document.addEventListener('mouseup', e => {
+      cursorA.classList.remove('expand')
+    })
   }
 }
 </script>
@@ -72,9 +101,9 @@ export default {
     position: absolute;
     left: 0;
     top: 0;
-    width: 100%;
+    width: 110%;
     height: 100%;
-    background-color: black;
+    background-color: #111;
     z-index: 1;
     animation: a-ltr-before 1.5s cubic-bezier(0.77, 0, 0.18, 1) forwards;
   }
