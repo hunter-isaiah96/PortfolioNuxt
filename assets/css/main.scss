@@ -1,25 +1,39 @@
-// * {
-//   cursor: none;
-// }
+$hamburger-active-layer-color: white;
+@import '~hamburgers/_sass/hamburgers/hamburgers.scss';
+.hamburger:focus {
+  outline: 0;
+}
 
-.text-underline {
-  text-decoration: underline !important;
+a {
+  text-decoration: none;
 }
 
 .full-height {
+  position: relative;
   height: 100vh;
 }
 
-.cursor {
-  position: absolute;
-  height: 50px;
-  width: 50px;
-  border: 2px solid grey;
-  border-radius: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  &.expand {
-    width: 60px;
-    height: 60px;
-    border: 2px solid white;
+.underlined {
+  position: relative;
+  &:hover:after {
+    background-color: rgba(0, 0, 0, 0.7);
   }
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 100%;
+    height: 1px;
+    transition: all 0.3s ease;
+  }
+}
+
+.p0-img .v-responsive__sizer {
+  padding: 0 !important;
+}
+
+.container {
+  max-width: 1024px !important;
 }
