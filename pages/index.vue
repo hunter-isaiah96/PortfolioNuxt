@@ -15,36 +15,22 @@
           </span>
         </button>
       </v-toolbar>
-      <v-row
-        style="padding-bottom: 128px;"
-        class="flex-grow-1"
-        align="center"
-        no-gutters
-      >
-        <v-col md="8" xs="12" class="mx-auto">
-          <v-avatar size="180" class="mb-12"
-            ><v-img :src="require('../assets/me.jpg')"></v-img
-          ></v-avatar>
-          <h1 class="black--text display-3 font-weight-bold mb-2">
-            Isaiah Hunter
-          </h1>
-          <h1 class="mt-12 font-weight-light grey--text text--darken-1">
-            I've been working in the tech industry for {{ years }} years. I am
-            passionate about code, design and graphics. Here's some of my work.
-          </h1>
+      <v-row style="padding-bottom: 128px;" class="flex-grow-1" align="center" no-gutters>
+        <v-col md="7" xs="12" class="mx-auto">
+          <v-avatar size="180" class="mb-12">
+            <v-img :src="require('../assets/me.jpg')"></v-img>
+          </v-avatar>
+          <h1 class="black--text display-3 font-weight-bold mb-2">Isaiah Hunter</h1>
+          <h1
+            class="mt-12 font-weight-light grey--text text--darken-3"
+          >I'm a Graphic, UI/UX developer, and full-stack JavaScript developer with 6 years of experience working in freelance and startups.</h1>
         </v-col>
       </v-row>
       <v-icon class="chev">mdi-chevron-down</v-icon>
     </v-container>
     <v-container>
       <v-row>
-        <v-col
-          class="pa-sm-12 pa-xs-0"
-          cols="12"
-          sm="6"
-          v-for="i in 2"
-          :key="i"
-        >
+        <v-col class="pa-sm-12 pa-xs-0" cols="12" sm="6" v-for="i in 2" :key="i">
           <v-img
             :src="
               require('../assets/krisztian-tabori-IyaNci0CyRk-unsplash.jpg')
@@ -52,17 +38,13 @@
             max-height="260px"
             min-height="260px"
           ></v-img>
-          <h2 class="font-weight-medium mt-5">
-            Design doesn't have to be difficult
-          </h2>
+          <h1 class="title mt-5">Design doesn't have to be difficult</h1>
           <h3 class="font-weight-regular grey--text text--darken-3 my-5">
             Stop approaching design as something that has to be difficult to be
             beautiful
           </h3>
           <h3 class="font-weight-regular font-weight-regular">
-            <a href="#" class="underlined grey--text text--darken-3"
-              >Read the article</a
-            >
+            <a href="#" class="underlined grey--text text--darken-3">Read the article</a>
           </h3>
         </v-col>
       </v-row>

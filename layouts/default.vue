@@ -4,13 +4,8 @@
       <nuxt />
       <transition name="fade">
         <div class="nav-overlay" v-show="drawer">
-          <v-container class="full-height" style="max-width: 1024px;">
-            <v-toolbar
-              color="transparent"
-              class="px-0"
-              elevation="0"
-              max-height="128"
-            >
+          <v-container class="full-height">
+            <v-toolbar color="transparent" class="px-0" elevation="0" max-height="128">
               <v-spacer></v-spacer>
               <button
                 :class="{ 'is-active': drawer }"
