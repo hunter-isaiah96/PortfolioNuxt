@@ -15,22 +15,43 @@
           </span>
         </button>
       </v-toolbar>
-      <v-row style="padding-bottom: 128px;" class="flex-grow-1" align="center" no-gutters>
+      <v-row
+        style="padding-bottom: 128px;"
+        class="flex-grow-1"
+        align="center"
+        no-gutters
+      >
         <v-col md="7" xs="12" class="mx-auto">
           <v-avatar size="180" class="mb-12">
             <v-img :src="require('../assets/me.jpg')"></v-img>
           </v-avatar>
-          <h1 class="black--text display-3 font-weight-bold mb-2">Isaiah Hunter</h1>
-          <h1
-            class="mt-12 font-weight-light grey--text text--darken-3"
-          >I'm a Graphic, UI/UX developer, and full-stack JavaScript developer with 6 years of experience working in freelance and startups.</h1>
+          <h1 class="black--text display-3 font-weight-bold mb-2">
+            Isaiah Hunter
+          </h1>
+          <h1 class="mt-12 font-weight-light grey--text text--darken-3">
+            I'm a Graphic, UI/UX developer, and full-stack JavaScript developer
+            with 6 years of experience working in freelance and startups.
+          </h1>
         </v-col>
       </v-row>
       <v-icon class="chev">mdi-chevron-down</v-icon>
     </v-container>
     <v-container>
       <v-row>
-        <v-col class="pa-sm-12 pa-xs-0" cols="12" sm="6" v-for="i in 2" :key="i">
+        <v-col
+          class="animated pa-sm-12 pa-xs-0"
+          cols="12"
+          sm="6"
+          v-for="i in 2"
+          :key="i"
+          v-intersect="{
+            handler: animate,
+            options: {
+              threshold: [0, 0.5, 1.0]
+            }
+          }"
+          animation="fadeInUp"
+        >
           <v-img
             :src="
               require('../assets/krisztian-tabori-IyaNci0CyRk-unsplash.jpg')
@@ -44,7 +65,9 @@
             beautiful
           </h3>
           <h3 class="font-weight-regular font-weight-regular">
-            <a href="#" class="underlined grey--text text--darken-3">Read the article</a>
+            <a href="#" class="underlined grey--text text--darken-3"
+              >Read the article</a
+            >
           </h3>
         </v-col>
       </v-row>
@@ -105,6 +128,14 @@ export default {
   methods: {
     toggleMenu() {
       this.$store.commit('menu/TOGGLE_DRAWER', !this.drawer)
+    },
+    animate(entries, observer, isIntersecting) {
+      if (isIntersecting) {
+        // console.log(entries[0].target.attributes.animation)
+        entries[0].target.classList.add(
+          entries[0].target.getAttribute('animation')
+        )
+      }
     }
   }
 }
