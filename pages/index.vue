@@ -25,7 +25,7 @@
         align="center"
         no-gutters
       >
-        <v-col md="7" xs="12" class="mx-auto text-center">
+        <v-col md="7" xs="12" class="mx-auto text-sm-center">
           <v-avatar size="180" class="my-5">
             <v-img :src="require('../assets/me.jpg')"></v-img>
           </v-avatar>
@@ -36,7 +36,6 @@
           </h1>
         </v-col>
       </v-row>
-      <v-icon v-if="this.$vuetify.breakpoint.name !== 'xs'" class="chev">mdi-chevron-down</v-icon>
     </v-container>
     <v-container>
       <v-row>
@@ -48,40 +47,26 @@
           :key="i"
           animation="fadeInUp"
         >
-          <v-card elevation="0" tile>
-            <v-img
-              :src="
-              require('../assets/krisztian-tabori-IyaNci0CyRk-unsplash.jpg')
-            "
-              max-height="260px"
-              min-height="260px"
-              transition="slide-x-transition"
-            ></v-img>
-            <v-card-title
-              class="font-weight-bold"
-            >How to choose a color palette for your new website</v-card-title>
-            <v-card-subtitle
-              class="text--primary"
-            >A good color palette makes your website identifiable, let's see just how.</v-card-subtitle>
-            <v-card-text>
-              <a href="#" class="underlined grey--text darken-4">Read full article</a>
-            </v-card-text>
-          </v-card>
-          <!-- <v-img
-            :src="
-              require('../assets/krisztian-tabori-IyaNci0CyRk-unsplash.jpg')
-            "
-            max-height="260px"
-            min-height="260px"
-          ></v-img>
-          <h2 class="font-weight-bold mt-5">Design doesn't have to be difficult</h2>
-          <h3 class="font-weight-regular grey--text text--darken-3 my-5">
-            Stop approaching design as something that has to be difficult to be
-            beautiful
-          </h3>
-          <h3 class="font-weight-regular font-weight-regular">
-            <a href="#" class="underlined grey--text text--darken-3">Read the article</a>
-          </h3>-->
+          <CardTile
+            img-height="280"
+            :image="require('../assets/krisztian-tabori-IyaNci0CyRk-unsplash.jpg')"
+            title="How to choose a color palette for your new website"
+            subtitle="A good color palette makes your website identifiable, let's see just how."
+          ></CardTile>
+        </v-col>
+      </v-row>
+    </v-container>
+    <v-container>
+      <v-row>
+        <v-col
+          class="animated pa-sm-10 pa-xs-0"
+          cols="12"
+          sm="4"
+          v-for="(skill, i) in skills"
+          :key="i"
+          animation="fadeInUp"
+        >
+          <CardTile :image="skill.image" :title="skill.name" :subtitle="skill.description"></CardTile>
         </v-col>
       </v-row>
     </v-container>
@@ -109,11 +94,35 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import CardTile from '@/components/CardTile'
 export default {
+  components: {
+    CardTile
+  },
   data() {
     return {
       years: new Date().getFullYear() - 2014,
-      menu_open: false
+      menu_open: false,
+      skills: [
+        {
+          image: require('@/assets/graphic_design.jpg'),
+          name: 'Beautiful Graphics',
+          description:
+            'Beautiful graphics go a long way to establish visual feedback without text, but here I am, adding text...'
+        },
+        {
+          image: require('@/assets/ui_ux.jpg'),
+          name: 'Simple UI/UX',
+          description:
+            'I aim for simplicity in UI/UX, no need to over produce your design because everyone else is doing it. KISS!'
+        },
+        {
+          image: require('@/assets/production_ready.jpg'),
+          name: 'Production Ready Code',
+          description:
+            "Unit Testing, E2E testing, best practices, you name it, I treat every project as if it's my own."
+        }
+      ]
     }
   },
   computed: {
