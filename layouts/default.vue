@@ -5,7 +5,12 @@
       <transition name="fade">
         <div class="nav-overlay" v-show="drawer">
           <v-container class="full-height">
-            <v-toolbar color="transparent" elevation="0" max-height="128" height="128">
+            <v-toolbar
+              color="transparent"
+              elevation="0"
+              max-height="128"
+              height="128"
+            >
               <v-spacer></v-spacer>
               <button
                 :class="{ 'is-active': drawer }"
@@ -24,7 +29,6 @@
     </v-app>
   </div>
 </template>
-<style src="@/assets/css/animate.css"></style>
 <style lang="scss" scoped>
 .nav-overlay {
   position: fixed;

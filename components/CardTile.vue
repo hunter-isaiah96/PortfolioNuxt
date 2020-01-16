@@ -1,10 +1,18 @@
 <template>
   <v-card elevation="0" tile>
-    <v-img :src="image" v-bind:max-height="imgHeight" v-bing:min-height="imgHeight"></v-img>
-    <v-card-title class="font-weight-bold px-0">{{title}}</v-card-title>
-    <v-card-subtitle class="text--primary px-0">{{subtitle}}</v-card-subtitle>
+    <v-img :src="image" :max-height="imgHeight" :min-height="imgHeight"></v-img>
+    <v-card-title class="font-weight-bold px-0">{{ title }}</v-card-title>
+    <v-card-subtitle class="text--primary px-0">{{ subtitle }}</v-card-subtitle>
     <v-card-text class="px-0" v-if="link">
-      <a :href="link.url" class="underlined grey--text darken-4">{{link.text}}</a>
+      <v-btn
+        elevation="0"
+        href="#"
+        class="underlined grey--text darken-4 px-0 font-weight-bold"
+        :ripple="false"
+        text
+      >
+        {{ link.text }}
+      </v-btn>
     </v-card-text>
   </v-card>
 </template>
