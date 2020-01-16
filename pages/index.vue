@@ -2,15 +2,10 @@
   <div>
     <v-container
       :class="{ 'full-height': this.$vuetify.breakpoint.name !== 'xs' }"
-      class="d-flex flex-column"
+      class="d-flex flex-column container-width"
       fluid
     >
-      <v-toolbar
-        class="toolbar px-0"
-        elevation="0"
-        max-height="128"
-        height="128"
-      >
+      <v-toolbar class="toolbar px-0" elevation="0" max-height="128" height="128">
         <v-toolbar-title>Isaiah Hunter</v-toolbar-title>
         <v-spacer></v-spacer>
         <button
@@ -38,9 +33,7 @@
           <v-avatar size="180" class="my-5">
             <v-img :src="require('../assets/me.jpg')"></v-img>
           </v-avatar>
-          <h1 class="black--text display-3 font-weight-bold mb-2">
-            Isaiah Hunter
-          </h1>
+          <h1 class="black--text display-3 font-weight-bold mb-2">Isaiah Hunter</h1>
           <h2 class="mt-12 font-weight-light grey--text text--darken-3">
             I'm a Graphic, UI/UX designer, and full-stack JavaScript developer
             with 6 years of experience working in freelance and startups. I hope
@@ -50,20 +43,9 @@
       </v-row>
     </v-container>
     <!-- <h1 class="text-center">Technologies & Software</h1> -->
-    <v-container>
-      <!-- <v-row>
-        <v-col cols="4" v-for="(tech, i) in technologies" :key="i">
-          <v-img min-height="100" max-height="100" :src="tech" contain></v-img>
-        </v-col>
-      </v-row> -->
+    <v-container class="container-width">
       <v-row>
-        <v-col
-          class="pa-sm-10 pa-xs-0"
-          cols="12"
-          sm="6"
-          v-for="i in 2"
-          :key="i"
-        >
+        <v-col class="pa-sm-10 pa-xs-0" cols="12" sm="6" v-for="i in 2" :key="i">
           <CardTile
             img-height="320"
             :image="
@@ -75,8 +57,6 @@
           ></CardTile>
         </v-col>
       </v-row>
-    </v-container>
-    <v-container>
       <v-row>
         <v-col
           class="animated pa-sm-10 pa-xs-0"
@@ -97,35 +77,38 @@
           ></CardTile>
         </v-col>
       </v-row>
-    </v-container>
-    <v-row justify="center" align="center">
-      <v-col align-self="center" cols="7">
-        <v-carousel
-          height="400"
-          hide-delimiter-background
-          :show-arrows="false"
-          cycle
-        >
-          <v-carousel-item
-            class="d-flex align-center"
-            v-for="(testimonial, i) in testimonials"
-            :key="i"
+      <v-row justify="center" align="center">
+        <v-col align-self="center" cols="7">
+          <v-carousel
+            height="400"
+            hide-delimiters
+            :show-arrows="false"
+            interval="3000"
+            cycle
+            continuous
           >
-            <v-row class="text-center">
-              <v-col cols="12"
-                ><v-avatar><v-img :src="testimonial.image"></v-img></v-avatar
-              ></v-col>
-              <v-col cols="12"
-                ><h2>{{ testimonial.testimony }}</h2></v-col
-              >
-              <v-col cols="12"
-                >- {{ testimonial.name }}, Front-end dev at Gen.video</v-col
-              >
-            </v-row>
-          </v-carousel-item>
-        </v-carousel>
-      </v-col>
-    </v-row>
+            <v-carousel-item
+              v-for="(testimonial, i) in testimonials"
+              :key="i"
+              reverse-transition="slide-y-transition"
+              transition="slide-y-reverse-transition"
+            >
+              <v-row class="text-center">
+                <v-col cols="12">
+                  <v-avatar>
+                    <v-img :src="testimonial.image"></v-img>
+                  </v-avatar>
+                </v-col>
+                <v-col cols="12">
+                  <h2>{{ testimonial.testimony }}</h2>
+                </v-col>
+                <v-col cols="12">- {{ testimonial.name }}, Front-end dev at Gen.video</v-col>
+              </v-row>
+            </v-carousel-item>
+          </v-carousel>
+        </v-col>
+      </v-row>
+    </v-container>
   </div>
 </template>
 <style lang="scss" scoped>
@@ -194,6 +177,12 @@ export default {
           testimony:
             'An insatiable thirst for knowledge as a developer and in general. Willingness to share that knowledge to help those around you grow. Team player, ready to fill whatever roles need to be filled.',
           image: require('@/assets/andre-jordan.jpg')
+        },
+        {
+          name: 'Haggai Weiser',
+          testimony:
+            'Isaiah is a talented full stack developer with an aptitude for figuring things out on the fly. Isaiah is passionate about best practices, gaining and sharing knowledge, and would be an asset to any teams culture.',
+          image: require('@/assets/haggai.jpg')
         }
       ]
     }
