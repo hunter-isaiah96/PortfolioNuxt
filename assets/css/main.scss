@@ -4,6 +4,11 @@ $hamburger-active-layer-color: white;
   outline: 0;
 }
 
+body {
+  height: 100vh;
+  overflow: hidden;
+}
+
 a {
   text-decoration: none;
 }
@@ -37,6 +42,11 @@ a {
 
 .p0-img .v-responsive__sizer {
   padding: 0 !important;
+}
+
+.no-scroll {
+  overflow: hidden;
+  max-height: 100vh;
 }
 
 .container-width {

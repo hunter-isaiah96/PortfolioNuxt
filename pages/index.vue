@@ -5,30 +5,7 @@
       class="d-flex flex-column container-width"
       fluid
     >
-      <v-toolbar class="toolbar px-0" elevation="0" max-height="128" height="128">
-        <v-toolbar-title>Isaiah Hunter</v-toolbar-title>
-        <v-spacer></v-spacer>
-        <button
-          :class="{ 'is-active': drawer }"
-          class="hamburger hamburger--squeeze"
-          type="button"
-          @click="toggleMenu()"
-        >
-          <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
-          </span>
-        </button>
-      </v-toolbar>
-      <v-row
-        :style="
-          `padding-bottom: ${
-            this.$vuetify.breakpoint.name === 'xs' ? '0' : '128px'
-          };`
-        "
-        class="flex-grow-1"
-        align="center"
-        no-gutters
-      >
+      <v-row class="flex-grow-1" align="center" no-gutters>
         <v-col md="7" xs="12" class="mx-auto text-center">
           <v-avatar size="180" class="my-5">
             <v-img :src="require('../assets/me.jpg')"></v-img>
@@ -42,24 +19,10 @@
         </v-col>
       </v-row>
     </v-container>
-    <!-- <h1 class="text-center">Technologies & Software</h1> -->
     <v-container class="container-width">
       <v-row>
-        <v-col class="pa-sm-10 pa-xs-0" cols="12" sm="6" v-for="i in 2" :key="i">
-          <CardTile
-            img-height="320"
-            :image="
-              require('../assets/krisztian-tabori-IyaNci0CyRk-unsplash.jpg')
-            "
-            title="How to choose a color palette for your new website"
-            subtitle="A good color palette makes your website identifiable, let's see just how."
-            :link="{ text: 'Read More', link: '#' }"
-          ></CardTile>
-        </v-col>
-      </v-row>
-      <v-row>
         <v-col
-          class="animated pa-sm-10 pa-xs-0"
+          class="animated pa-sm-8 pa-xs-0"
           cols="12"
           sm="4"
           v-for="(skill, i) in skills"
@@ -77,7 +40,20 @@
           ></CardTile>
         </v-col>
       </v-row>
-      <v-row justify="center" align="center">
+      <v-row>
+        <v-col class="pa-sm-10 pa-xs-0" cols="12" sm="6" v-for="i in 2" :key="i">
+          <CardTile
+            img-height="320"
+            :image="
+              require('../assets/krisztian-tabori-IyaNci0CyRk-unsplash.jpg')
+            "
+            title="How to choose a color palette for your new website"
+            subtitle="A good color palette makes your website identifiable, let's see just how."
+            :link="{ text: 'Read More', link: '#' }"
+          ></CardTile>
+        </v-col>
+      </v-row>
+      <!-- <v-row justify="center" align="center">
         <v-col align-self="center" cols="7">
           <v-carousel
             height="400"
@@ -93,21 +69,21 @@
               reverse-transition="slide-y-transition"
               transition="slide-y-reverse-transition"
             >
-              <v-row class="text-center">
+              <v-row class="text-center fill-height" align="center">
                 <v-col cols="12">
-                  <v-avatar>
+                  <v-avatar height="100" width="100">
                     <v-img :src="testimonial.image"></v-img>
                   </v-avatar>
                 </v-col>
                 <v-col cols="12">
                   <h2>{{ testimonial.testimony }}</h2>
                 </v-col>
-                <v-col cols="12">- {{ testimonial.name }}, Front-end dev at Gen.video</v-col>
+                <v-col cols="12">- {{ testimonial.name }}, {{testimonial.role}}</v-col>
               </v-row>
             </v-carousel-item>
           </v-carousel>
         </v-col>
-      </v-row>
+      </v-row>-->
     </v-container>
   </div>
 </template>
@@ -173,16 +149,18 @@ export default {
       ],
       testimonials: [
         {
+          image: require('@/assets/andre-jordan.jpg'),
           name: 'Andre Jordan',
           testimony:
             'An insatiable thirst for knowledge as a developer and in general. Willingness to share that knowledge to help those around you grow. Team player, ready to fill whatever roles need to be filled.',
-          image: require('@/assets/andre-jordan.jpg')
+          role: 'Front-end dev at Gen.video'
         },
         {
+          image: require('@/assets/haggai.jpg'),
           name: 'Haggai Weiser',
           testimony:
             'Isaiah is a talented full stack developer with an aptitude for figuring things out on the fly. Isaiah is passionate about best practices, gaining and sharing knowledge, and would be an asset to any teams culture.',
-          image: require('@/assets/haggai.jpg')
+          role: 'VP of Engineering at Alpha'
         }
       ]
     }
