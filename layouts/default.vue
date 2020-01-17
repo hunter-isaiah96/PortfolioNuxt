@@ -1,11 +1,16 @@
 <template>
   <div>
-    <v-app :class="{'no-scroll': drawer}" class="mx-auto">
+    <v-app class="mx-auto">
       <v-container class="pa-0 white" fluid>
         <v-row no-gutters>
           <v-col cols="12">
-            <v-toolbar class="px-0" color="transparent" elevation="0" max-height="128" height="128">
-              <v-toolbar-title>Isaiah Hunter</v-toolbar-title>
+            <v-toolbar class="px-0" color="transparent" elevation="0">
+              <a class="menu-button">
+                <span class="mb-1"></span>
+                <span class="mb-1"></span>
+                <span></span>
+              </a>
+              <!-- <v-toolbar-title>Isaiah Hunter</v-toolbar-title>
               <v-spacer></v-spacer>
               <button
                 :class="{ 'is-active': drawer }"
@@ -16,12 +21,12 @@
                 <span class="hamburger-box">
                   <span class="hamburger-inner"></span>
                 </span>
-              </button>
+              </button>-->
             </v-toolbar>
           </v-col>
-          <v-col cols="12">
+          <v-col style="position: relative; overflow-y: auto;" class="full-height" cols="12">
             <nuxt />
-            <v-container class="grey lighten-5 d-flex align-center pa-0 full-height" fluid>
+            <v-container class="grey lighten-5 d-flex align-center pa-0" fluid>
               <v-row justify="end">
                 <v-col cols="2" v-for="(item, key) of navigation" :key="key">
                   <h1 class="text-capitalize">{{key}}</h1>
@@ -33,33 +38,72 @@
                 </v-col>
               </v-row>
             </v-container>
+            <transition name="fade">
+              <v-container
+                class="d-flex align-center nav-overlay grey darken-4"
+                v-if="drawer"
+                fluid
+              >
+                <v-row justify="end">
+                  <v-col cols="2" v-for="(item, key) of navigation" :key="key">
+                    <h1 class="grey--text text-capitalize">{{key}}</h1>
+                    <v-list color="transparent">
+                      <v-list-item class="pa-0" v-for="(item, i) in item" :key="i">
+                        <v-list-item-title class="white--text darken-1">{{item.text}}</v-list-item-title>
+                      </v-list-item>
+                    </v-list>
+                  </v-col>
+                </v-row>
+              </v-container>
+            </transition>
           </v-col>
         </v-row>
-        <transition name="fade">
-          <v-container class="d-flex align-center nav-overlay grey darken-4" v-if="drawer" fluid>
-            <v-row justify="end">
-              <v-col cols="2" v-for="(item, key) of navigation" :key="key">
-                <h1 class="grey--text text-capitalize">{{key}}</h1>
-                <v-list color="transparent">
-                  <v-list-item class="pa-0" v-for="(item, i) in item" :key="i">
-                    <v-list-item-title class="white--text darken-1">{{item.text}}</v-list-item-title>
-                  </v-list-item>
-                </v-list>
-              </v-col>
-            </v-row>
-          </v-container>
-        </transition>
       </v-container>
     </v-app>
   </div>
 </template>
 <style lang="scss" scoped>
+.menu-button {
+  &:hover {
+    span:after {
+      width: 0%;
+    }
+  }
+  span {
+    display: block;
+    position: relative;
+    width: 30px;
+    height: 3px;
+    @for $i from 0 through 3 {
+      &:nth-child(#{$i}):after {
+        transition: all #{$i * 90}ms ease-in;
+      }
+    }
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+    }
+    &:before {
+      width: 100%;
+      background-color: lightgray;
+    }
+    &:after {
+      width: 100%;
+      background-color: #202020;
+      transition: width 0.2s ease;
+    }
+  }
+}
 .nav-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
 }
 .fade-enter-active,
 .fade-leave-active {
